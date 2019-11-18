@@ -12,6 +12,8 @@ window = G::Window.new(0, 0, w, h,
 app.main_widget = window
 
 window.setup_event
-Painter.load_png ARGV[0], Bytes.new(window.bitmap.as(UInt8*), w * h * 4)
+wbitmap = Bytes.new(window.bitmap.as(UInt8*), w * h * 4)
+Painter.load_png ARGV[0], wbitmap
+Painter.dealpha wbitmap
 
 app.run
